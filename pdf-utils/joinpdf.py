@@ -13,7 +13,7 @@ def _worker(pdf):
         pdf_byteCode = PdfFileReader(pdf, "rb")
         return({'status':True,'fileName':pdf,'byteCode':pdf_byteCode})
     except Exception as e:
-        return((False,None))
+        return({'status':False,'fileName':pdf,'byteCode':None})
 
 def multiprocesPdfs(pdfList,output):
     """This function takes two arguments. The first is a directory containing a
