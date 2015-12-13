@@ -11,11 +11,11 @@ To use this feature you run the command:
 
  `./pdf-utils join myPdfDirectory/ largepdf.pdf`
 
- ### Password Removal
- To Be Added
+### Password Removal
+To Be Added
 
- ### Watermarking
-  To Be Added
+### Watermarking
+To Be Added
 
 ## Linux/OS X Installation (Setup)
 
