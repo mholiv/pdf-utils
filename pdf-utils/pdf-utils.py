@@ -7,10 +7,30 @@ __version__ = "1.0.0"
 import os
 import click
 from joinpdf import multiprocesPdfs
+from addWatermark import waterMark
 
 @click.group()
 def cli():
     pass
+
+@cli.command()
+@click.argument('argss', nargs=2)
+def watermark(argss):
+    # First move to working directory. That way relative paths will work.
+    os.chdir(os.getcwd())
+
+    #Get your source directory and output.
+    inputPdf = os.path.abspath(argss[0])
+    outputPdf = argss[1]
+
+    #Add absolute path to out if needed.
+    if outputPdf[0] != ('/' or '~'):
+        outputPdf = os.path.join(os.getcwd(),outputPdf)
+
+    #Do the actual watermarking
+    waterMark(inputPdf,outputPdf)
+
+
 
 @cli.command()
 @click.argument('argss', nargs=2)
@@ -40,7 +60,7 @@ def join(argss):
     #'python-esque' but python loops don't allow for in place editing.
     i = 0
     for i in range(len(pdfList)):
-        if pdfList[i][1] != ('/' or '~'):
+        if pdfList[i][0] != ('/' or '~'):
             pdfList[i] = os.path.join(directory,pdfList[i])
 
     #Add absolute path to out if needed.
