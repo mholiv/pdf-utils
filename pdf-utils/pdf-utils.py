@@ -14,21 +14,24 @@ def cli():
     pass
 
 @cli.command()
-@click.argument('argss', nargs=2)
-def watermark(argss):
+@click.argument('pdfsrc', nargs=1)
+@click.argument('pdfdst', nargs=1)
+@click.argument('mrk', nargs=1)
+def watermark(pdfsrc, pdfdst, mrk):
+    print(mrk)
+
     # First move to working directory. That way relative paths will work.
     os.chdir(os.getcwd())
 
     #Get your source directory and output.
-    inputPdf = os.path.abspath(argss[0])
-    outputPdf = argss[1]
+    inputPdf = os.path.abspath(pdfsrc)
 
     #Add absolute path to out if needed.
-    if outputPdf[0] != ('/' or '~'):
-        outputPdf = os.path.join(os.getcwd(),outputPdf)
+    if pdfdst[0] != ('/' or '~'):
+        outputPdf = os.path.join(os.getcwd(),pdfdst)
 
     #Do the actual watermarking
-    waterMark(inputPdf,outputPdf)
+    waterMark(inputPdf,outputPdf,mrk)
 
 
 

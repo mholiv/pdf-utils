@@ -15,7 +15,14 @@ To use this feature you run the command:
 To Be Added
 
 ### Watermarking
-To Be Added
+pdf-utils will enable you to watermark pdfs.
+
+**Warning: this function will not work with very large PDFs**
+
+To use this feature you run the command
+  `./pdf-utils watermark sourcepdf.pdf destinationpdf.pdf 'My watermark string here.'`
+
+
 
 ## Linux/OS X Installation (Setup)
 
